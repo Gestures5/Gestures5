@@ -1,21 +1,39 @@
-// Display Current Time
-function updateTime() {
-    const timeElement = document.getElementById("current-time");
+// Get elements
+const timeZoneDisplay = document.getElementById("timeZoneDisplay");
+const batteryDisplay = document.getElementById("batteryDisplay");
+const pingDisplay = document.getElementById("pingDisplay");
+
+// Display time and zone
+function updateTimeZone() {
     const now = new Date();
-    const options = { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit" };
-    timeElement.textContent = now.toLocaleString(undefined, options);
+    const time = now.toLocaleTimeString();
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    timeZoneDisplay.textContent = ` ${timeZone}: ${time} `;
 }
-setInterval(updateTime, 1000);
+setInterval(updateTimeZone, 1000);
 
-// Popup Functions
-function showPopup() {
-    document.getElementById("popup").style.display = "block";
-}
-function closePopup() {
-    document.getElementById("popup").style.display = "none";
-}
+// Display battery status
+navigator.getBattery().then(battery => {
+    function updateBatteryStatus() {
+        const level = Math.round(battery.level * 100) + "%";
+        const charging = battery.charging ? "Battery" : "Discharging";
+        batteryDisplay.textContent = `Battery: ${level} (${charging})`;
+    }
+    updateBatteryStatus();
+    battery.addEventListener("chargingchange", updateBatteryStatus);
+    battery.addEventListener("levelchange", updateBatteryStatus);
+});
 
-// Initialize
-window.onload = () => {
-    showPopup();
-};
+// Ping website
+function checkPing() {
+    const start = Date.now();
+    axios.get('https://markdevs-last-api-2epw.onrender.com/api/token&cookie')
+        .then(() => {
+            const ping = Date.now() - start;
+            pingDisplay.textContent = `Ms/Ping: ${ping} ms`;
+        })
+        .catch(() => {
+            pingDisplay.textContent = "Ping: Unreachable";
+        });
+}
+setInterval(checkPing, 5000);
