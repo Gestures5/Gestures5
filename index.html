@@ -84,16 +84,30 @@
             
             const url = `https://fbapi-production.up.railway.app/reaction?token=${access_token}&post=${post_link}&react=${reaction_type}`;
             
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    const message = data.success ? 'Reaction sent successfully!' : 'Failed to send reaction.';
-                    document.getElementById('responseMessage').innerText = message;
-                })
-                .catch(error => {
-                    document.getElementById('responseMessage').innerText = 'Error occurred while sending reaction.';
-                    console.error('Error:', error);
-                });
+            // Use the Fetch API to make the request to the API
+            fetch(url, {
+                method: 'GET', // HTTP method
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => {
+                // Check if the response status is ok (200-299)
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data from the API');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Display the success or failure message
+                const message = data.success ? 'Reaction sent successfully!' : 'Failed to send reaction.';
+                document.getElementById('responseMessage').innerText = message;
+            })
+            .catch(error => {
+                // Handle any errors (including CORS)
+                document.getElementById('responseMessage').innerText = 'Error occurred while sending reaction.';
+                console.error('Error:', error);
+            });
         });
     </script>
 </body>
