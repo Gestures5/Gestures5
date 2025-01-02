@@ -1,31 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Facebook Post Reaction</title>
-  <link rel="stylesheet" href="/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Interaction</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>React to Facebook Post</h1>
-  <form action="/server.js" method="POST">
-    <input type="text" name="access_token" placeholder="Access Token" required />
-    <input type="text" name="post_link" placeholder="Post Link" required />
-    <select name="reaction_type" required>
-      <option value="" disabled selected>Select Reaction</option>
-      <option value="LIKE">LIKE</option>
-      <option value="LOVE">LOVE</option>
-      <option value="HAHA">HAHA</option>
-      <option value="WOW">WOW</option>
-      <option value="SAD">SAD</option>
-      <option value="ANGRY">ANGRY</option>
-      <option value="CARE">CARE</option>
-    </select>
-    <button type="submit">Send Reaction</button>
-  </form>
-  <div class="message">
-    <!-- Message will appear here -->
-    <p><%= message %></p>
-  </div>
+    <div class="container">
+        <h1>React to a Post</h1>
+        <form id="reactionForm">
+            <input type="text" id="access_token" placeholder="Enter Access Token" required>
+            <input type="url" id="post_link" placeholder="Enter Post Link" required>
+            <select id="reaction_type">
+                <option value="like">Like</option>
+                <option value="love">Love</option>
+                <option value="wow">Wow</option>
+                <option value="sad">Sad</option>
+                <option value="angry">Angry</option>
+            </select>
+            <button type="submit">React</button>
+        </form>
+        <div id="responseMessage"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
