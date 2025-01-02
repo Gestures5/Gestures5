@@ -13,12 +13,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // Serve the HTML form
-app.get('/', (req, res) => {
+app.get('/index.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
 // Handle form submission
-app.post('/', async (req, res) => {
+app.post('/index.html', async (req, res) => {
   const { access_token, post_link, reaction_type } = req.body;
 
   if (!access_token || !post_link || !reaction_type) {
