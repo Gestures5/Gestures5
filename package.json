@@ -2,7 +2,7 @@
   "name": "fb-boost-react",
   "version": "1.0.0",
   "description": "Boost reactions on your Facebook post with ease!",
-  "main": "server.js",
+  "main": "index.html",
   "scripts": {
     "build:css": "tailwindcss -i ./tailwind.css -o ./output.css",
     "start": "node server.js"
