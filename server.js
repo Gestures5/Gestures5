@@ -8,7 +8,7 @@ app.use(express.static(path.join(__dirname, '/index.html')));
 
 // Serve index.html when accessing the root URL
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/index.html', 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Start the server
