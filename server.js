@@ -4,11 +4,11 @@ const app = express();
 const port = 3000;
 
 // Serve static files (HTML, CSS, JS)
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/index.html')));
 
 // Serve index.html when accessing the root URL
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, '/index.html', 'index.html'));
 });
 
 // Start the server
