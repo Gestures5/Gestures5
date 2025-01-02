@@ -1,22 +1,13 @@
 {
-  "name": "fb-boost-react",
+  "name": "react-to-post",
   "version": "1.0.0",
-  "description": "Boost reactions on your Facebook post with ease!",
-  "main": "index.html",
+  "description": "A website to react to posts using an API",
+  "main": "server.js",
   "scripts": {
-    "build:css": "tailwindcss -i ./tailwind.css -o ./output.css",
     "start": "node server.js"
   },
   "dependencies": {
-    "axios": "^0.21.4",
-    "body-parser": "^1.20.2",
-    "cheerio": "^1.0.0-rc.12",
-    "express": "^4.19.2"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.3"
+    "express": "^4.18.2"
   },
   "author": "",
   "license": "ISC"
