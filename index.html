@@ -3,8 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Interaction</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>React to a Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, select, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #responseMessage {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -23,6 +73,28 @@
         </form>
         <div id="responseMessage"></div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        document.getElementById('reactionForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            
+            const access_token = document.getElementById('access_token').value;
+            const post_link = document.getElementById('post_link').value;
+            const reaction_type = document.getElementById('reaction_type').value;
+            
+            const url = `https://fbapi-production.up.railway.app/reaction?token=${access_token}&post=${post_link}&react=${reaction_type}`;
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const message = data.success ? 'Reaction sent successfully!' : 'Failed to send reaction.';
+                    document.getElementById('responseMessage').innerText = message;
+                })
+                .catch(error => {
+                    document.getElementById('responseMessage').innerText = 'Error occurred while sending reaction.';
+                    console.error('Error:', error);
+                });
+        });
+    </script>
 </body>
 </html>
