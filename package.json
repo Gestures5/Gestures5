@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build:css": "tailwindcss -i ./tailwind.css -o ./output.css",
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "axios": "^0.21.4",
