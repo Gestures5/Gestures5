@@ -1,62 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Token & Cookie Getter</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="https://i.ibb.co/Sw36c4f/24efcade947113a0fd71402e84ff1f24.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facebook Post Reaction</title>
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>Token and Cookie Getter</h1>
-        <form id="chilkiForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" class="form-control" placeholder="Email/Uid/Number" style="font-size: 18px; color:blue" name="username" required>
-
-            <label for="password">Password:</label>
-            <input type="password" class="form-control" placeholder="Password" style="font-size: 18px; color:red" id="password" name="password" required>
-
-            <button type="submit">Submit</button>
-        </form>
-
-        <!-- Additional Info Section below the submit button -->
-        <div class="info">
-            <div id="timeZone">
-                <i class="fas fa-clock"></i>
-                <span id="timeZoneDisplay">: Loading...</span>
-            </div>
-            <div id="batteryStatus">
-                <i class="fas fa-battery-half"></i>
-                <span id="batteryDisplay">Battery: Loading...</span>
-            </div>
-            <div id="pingCheck">
-                <i class="fas fa-wifi"></i>
-                <span id="pingDisplay">Ping: Loading...</span>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="result" id="result">
-            <p>Token & Cookies result here.</p>
-        </div>
-    </div>
-
-    <!-- Snowflakes -->
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❄</div>
-
-    <script src="index.js"></script>
+  <h1>React to Facebook Post</h1>
+  <form action="/" method="POST">
+    <input type="text" name="access_token" placeholder="Access Token" required />
+    <input type="text" name="post_link" placeholder="Post Link" required />
+    <select name="reaction_type" required>
+      <option value="" disabled selected>Select Reaction</option>
+      <option value="LIKE">LIKE</option>
+      <option value="LOVE">LOVE</option>
+      <option value="HAHA">HAHA</option>
+      <option value="WOW">WOW</option>
+      <option value="SAD">SAD</option>
+      <option value="ANGRY">ANGRY</option>
+      <option value="CARE">CARE</option>
+    </select>
+    <button type="submit">Send Reaction</button>
+  </form>
+  <div class="message">
+    <!-- Message will appear here -->
+    <p><%= message %></p>
+  </div>
 </body>
 </html>
