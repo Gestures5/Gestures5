@@ -1,14 +1,12 @@
 {
-  "name": "react-to-post",
+  "name": "maiko-mini-shop",
   "version": "1.0.0",
-  "description": "A website to react to posts using an API",
+  "description": "Mini shop website with Node.js and Express",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.18.2"
-  },
-  "author": "",
-  "license": "ISC"
+  }
 }
