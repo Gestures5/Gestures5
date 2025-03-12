@@ -1,196 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FB Auto Liker</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #1a1a1a;
-      color: #e0e0e0;
-      overflow: auto;
-    }
-
-    .card {
-      background-color: #333;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-      margin: 20px;
-    }
-
-    .form-label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: #e0e0e0;
-    }
-
-    .form-input,
-    .form-select,
-    .form-button {
-      width: 100%;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #555;
-      background-color: #444;
-      color: #e0e0e0;
-    }
-
-    .form-button {
-      background-color: #007bff;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    .form-button:disabled {
-      background-color: #555;
-    }
-
-    .form-button.reset {
-      background-color: #d32f2f;
-      margin-top: 0;
-    }
-
-    .footer {
-      margin-top: 20px;
-      text-align: center;
-      color: #777;
-    }
-
-    /* Loading Spinner */
-    .loading-spinner {
-      border: 4px solid rgba(0, 0, 0, 0.1);
-      border-left-color: #007bff;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-  </style>
+    <title>Maiko Mini Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="particles.min.js"></script>
 </head>
-<body class="flex items-center justify-center min-h-screen">
-  <div class="card w-full max-w-md">
-    <h1 class="text-2xl font-bold text-center mb-4">FB Auto Liker</h1>
-    <p class="text-center text-sm mb-6 text-gray-400">Boost reactions on your Facebook post with ease!</p>
-    <form id="boost-form" class="space-y-6" novalidate>
-      <div class="form-group">
-        <label for="cookie" class="form-label">Cookie:</label>
-        <input type="text" id="cookie" name="cookie" class="form-input" required>
-      </div>
-      <div class="form-group">
-        <label for="link" class="form-label">Post Link:</label>
-        <input type="url" id="link" name="link" class="form-input" required>
-      </div>
-      <div class="form-group">
-        <label for="reaction" class="form-label">Reaction:</label>
-        <select id="reaction" name="reaction" class="form-select" required>
-          <option value="">Select a reaction</option>
-          <option value="LIKE">Like</option>
-          <option value="LOVE">Love</option>
-          <option value="CARE">Care</option>
-          <option value="HAHA">Haha</option>
-          <option value="WOW">Wow</option>
-          <option value="SAD">Sad</option>
-          <option value="ANGRY">Angry</option>
-        </select>
-      </div>
-      <button id="submit-button" type="submit" class="form-button">Boost Reaction</button>
-      <button id="reset-button" type="reset" class="form-button reset">Reset</button>
-    </form>
-    <div id="loading" class="mt-4 p-4 text-center hidden">
-      <div class="loading-spinner"></div>
-      <p class="text-gray-400 mt-2">Processing...</p>
+<body>
+    <div id="particles-js"></div>
+
+    <div class="title-container">
+        <h1>ıllı Maiko Mini Shop</h1>
     </div>
+
+    <div class="container">
+        <div class="product">
+            <img src="https://i.imgur.com/wgl5opR.jpeg" alt="Old Account">
+            <h3>• SINCE DEC 2024<br>• CAN CHANGE<br> • TEMPMAIL MADE (NO ACCESS)<br>• NO FBFS/FFS <br>• GOOD FOR SEMI & RA </h3>
+            <p>₱ 15 <br> STATUS: AVAILABLE </p>
+            <button onclick="showPayment('Product 1')">Buy Now</button>
+        </div>
+        <div class="product">
+            <img src="https://i.imgur.com/mdr7Voo.jpeg" alt="Product 2">
+            <h3>• SINCE FEB 2025 <br>• CAN CHANGE <br>• TEMPMAIL MADE (NO ACCESS)<br> • NO FBFS/FFS<br> GOOD FOR SEMI & RA</h3>
+            <p>₱ 8 <br> STATUS: AVAILABLE</p>
+            <button onclick="showPayment('Product 2')">Buy Now</button>
+        </div>
+        <div class="product">
+            <img src="https://i.imgur.com/z6OYTAY.jpeg" alt="Product 3">
+            <h3>UNAVAILABLE</h3>
+            <p>₱: ?</p>
+            <button onclick="showPayment('Product 3')">Buy Now</button>
+        </div>
+    </div>
+
+    <div id="payment-info" class="payment-info"></div>
+
     <div class="footer">
-      &copy; 2024 Churchill. All rights reserved.
+        <p id="greeting"></p>
+        <p>© Copyright All rights reserved 2025</p>
     </div>
-  </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      Swal.fire({
-        title: 'Important',
-        text: 'Please use a dummy account for the cookie.',
-        icon: 'warning',
-        confirmButtonText: 'OK'
-      });
-
-      const form = document.getElementById('boost-form');
-      const cookieInput = document.getElementById('cookie');
-      const linkInput = document.getElementById('link');
-      const reactionInput = document.getElementById('reaction');
-      const loadingDiv = document.getElementById('loading');
-
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const cookie = cookieInput.value.trim();
-        const link = linkInput.value.trim();
-        const reaction = reactionInput.value;
-
-        if (!cookie || !link || !reaction) {
-          Swal.fire({
-            title: 'Error!',
-            text: 'Please fill in all the fields correctly.',
-            icon: 'error',
-            confirmButtonText: 'OK'
-          });
-          return;
-        }
-
-        loadingDiv.classList.remove('hidden');
-
-        try {
-          const apiUrl = `/api/react?cookie=${encodeURIComponent(cookie)}&link=${encodeURIComponent(link)}&react=${encodeURIComponent(reaction)}`;
-
-          const response = await fetch(apiUrl);
-          const result = await response.json();
-
-          loadingDiv.classList.add('hidden');
-
-          if (result.success) {
-            Swal.fire({
-              title: 'Success!',
-              text: 'Successfully boosted the post. Please wait 20 minutes before boosting again. Thank you!',
-              icon: 'success',
-              confirmButtonText: 'OK'
-            });
-          } else {
-            Swal.fire({
-              title: 'Error!',
-              text: result.message || 'An error occurred.',
-              icon: 'error',
-              confirmButtonText: 'OK'
-            });
-          }
-        } catch (error) {
-          loadingDiv.classList.add('hidden');
-          Swal.fire({
-            title: 'Error!',
-            text: 'An error occurred while boosting the post.',
-            icon: 'error',
-            confirmButtonText: 'OK'
-          });
-        }
-      });
-
-      form.addEventListener('reset', () => {
-        loadingDiv.classList.add('hidden');
-      });
-    });
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
