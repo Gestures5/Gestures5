@@ -1,221 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maiko Profile Page</title>
-   <link rel="icon" href="https://i.imgur.com/GXXQp2B.jpeg"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maiko Mini Shop</title>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+         <link rel="icon" href="https://i.imgur.com/GXXQp2B.jpeg"> 
     <style>
-  
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      height: 100vh;
-      margin: 0;
-      background-color: #f4f7f6;
-      color: #333;
-      justify-content: center;
-      align-items: center;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .dark-mode {
-      background-color: #121212;
-      color: #f4f7f6;
-    }
-
-    .profile-card {
-      background: #fff;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      border-radius: 15px;
-      overflow: hidden;
-      width: 400px;
-      height: 400px;
-      text-align: center;
-      transition: background 0.3s;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .dark-mode .profile-card {
-      background: #1e1e1e;
-    }
-
-    .profile-header {
-      background: linear-gradient(135deg, blue);
-      color: #fff;
-      padding: 30px 0;
-    }
-
-    .profile-image {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      border: 4px solid #ffffff;
-      margin-top: -10px;
-    }
-
-    .profile-name {
-      font-size: 24px;
-      margin: 10px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .verified-badge {
-      width: 20px;
-      height: 20px;
-    }
-
-    .profile-bio {
-      font-size: 16px;
-      color: #777;
-      margin: 5px 20px 15px;
-    }
-
-    .profile-links {
-      display: flex;
-      justify-content: space-around;
-      padding: 15px 0;
-      border-top: 1px solid #eee;
-    }
-
-    .profile-links a {
-      text-decoration: none;
-      color: #ff5722;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .profile-links a img {
-      width: 18px;
-      height: 18px;
-    }
-
-    .btn {
-      display: inline-block;
-      background-color: #ff5722;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 20px;
-      text-decoration: none;
-    }
-
-    .btn:hover {
-      background-color: #e64a19;
-    }
-
-    .profile-actions {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 10px 0;
-    }
-
-    .dark-mode .profile-links a {
-      color: #ff9800;
-    }
-
-    .toggle-container {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      cursor: pointer;
-    }
-
-    .toggle-icon {
-      width: 30px;
-      height: 30px;
-    }
-
-    #date-time {
-      padding: 10px 0;
-      font-size: 14px;
-      color: #777;
-    }
-
-    .dark-mode #date-time {
-      color: #bbb;
-    }
-  </style>
+        body {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin: 0;
+            background-color: #000;
+        }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+        .title-container {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #4CAF50;
+            border-radius: 12px;
+            color: #fff;
+            width: 70%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        .product {
+            border: 2px solid green;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: black;
+            opacity: 0.8;
+            width: 300px;
+            text-align: center;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
+            width: 100%;
+            border-bottom: 1px solid #ddd;
+            border: 1px solid greenyellow;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .product h3 {
+            margin: 0;
+            color: green;
+        }
+        .product p {
+            color: green;
+        }
+        .product button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .product button:hover {
+            background-color: #45a049;
+        }
+        .payment-info {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: gray;
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+        }
+        .footer {
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 50px;
+            padding: 10px 0;
+            border-top: 2px solid #4CAF50;
+            background: rgba(0, 0, 0, 0.9);
+        }
+    </style>
 </head>
-
 <body>
-  <div class="toggle-container" onclick="toggleDarkMode()">
-    <img src="https://cdn-icons-png.flaticon.com/512/1827/1827951.png" 
-         alt="Toggle Dark Mode" 
-         class="toggle-icon" 
-         id="toggle-icon">
-  </div>
+    <div id="particles-js"></div> 
 
-  <div class="profile-card">
-    <div class="profile-header">
-      <img src="https://i.imgur.com/SmBUktQ.jpeg" 
-           alt="Profile Image" 
-           class="profile-image">
-      <h1 class="profile-name">
-        Maiko Neverheard
-        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" 
-             alt="Verified Badge" 
-             class="verified-badge">
-      </h1>
-      <p class="profile-bio">Hello, I am Maiko new seller of socmed accs, hmu!</p>
+    <div class="title-container">
+        <h1>ıllı Maiko Mini Shop</h1>
     </div>
 
-    <div class="profile-actions">
-      <a href="https://www.facebook.com/100074862084605" class="btn">Follow</a>
-      <a href="https://www.facebook.com/100074862084605" class="btn">Message</a>
+    <div class="container">
+        <div class="product">
+            <img src="https://i.imgur.com/wgl5opR.jpeg" alt="Old Account">
+            <h3>• SINCE DEC 2024<br>• CAN CHANGE <br>• CAN LOCK<br> • TEMPMAIL MADE (NO ACCESS)<br>• NO FBFS/FFS <br>• GOOD FOR SEMI & RA </h3>
+            <p>₱ 15 <br> STATUS: AVAILABLE </p>
+            <button onclick="showPayment('Product 1')">Buy Now</button>
+        </div>
+        <div class="product">
+            <img src="https://i.imgur.com/mdr7Voo.jpeg" alt="Product 2">
+            <h3>• SINCE FEB 2025 <br>• CAN CHANGE <br>• CAN LOCK <br>• TEMPMAIL MADE (NO ACCESS)<br> • NO FBFS/FFS<br>• GOOD FOR SEMI & RA</h3>
+            <p>₱ 8 <br> STATUS: AVAILABLE</p>
+            <button onclick="showPayment('Product 2')">Buy Now</button>
+        </div>
+        <div class="product">
+            <img src="https://i.imgur.com/uYqpvrz.jpeg" alt="Product 3">
+            <h3>• SINCE OCT 2024<br>• CAN CHANGE<br> • TEMPMAIL MADE (NO ACCESS)<br>• NO FBFS/FFS <br>• GUARD ON ACTIVATED  <br>• CAN LOCK <br>• MAKALAT TL (KUNTI LANG) <br>• GOOD FOR SEMI & RA</h3>
+            <p>₱: 15 <br> STATUS: AVAILABLE </p>
+            <button onclick="showPayment('Product 3')">Buy Now</button>
+        </div>
     </div>
 
-    <div class="profile-links">
-      <a href="/maikxyzshop.html">
-        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170627.png" alt="Shop Icon">
-        My Shop
-      </a>
-      <a href="#">Contact Us</a>
-      <a href="#">FAQs</a>
+    <div id="payment-info" class="payment-info"></div>
+
+    <div class="footer">
+        <p id="greeting"></p>
+        <p>© Copyright All rights reserved 2025</p>
     </div>
 
-    <!-- Date and Time Section -->
-    <div id="date-time"></div>
-  </div>
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 100 },
+                size: { value: 3 },
+                move: { speed: 2 },
+                color: { value: "#4CAF50" },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#4CAF50",
+                    opacity: 0.4,
+                    width: 1
+                }
+            }
+        });
 
-  <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-      const icon = document.getElementById('toggle-icon');
-      const isDarkMode = document.body.classList.contains('dark-mode');
+        function showPayment(productName) {
+            const paymentInfo = document.getElementById('payment-info');
+            paymentInfo.style.display = 'block';
+            paymentInfo.innerHTML = `
+                <strong>${productName}</strong><br>
+                Mode of Payment:<br>
+                GCASH: 09525303053 L.C <br>
+                <div class="owner-info">
+                    Send your receipt to <a href="https://www.facebook.com/10007486208460">Maiko </a>
+                </div>
+            `;
+        }
 
-      icon.src = isDarkMode
-        ? 'https://cdn-icons-png.flaticon.com/512/606/606812.png' // Moon icon for dark mode
-        : 'https://cdn-icons-png.flaticon.com/512/1827/1827951.png'; // Sun icon for light mode
-    }
+        function updateGreeting() {
+            const greetingElement = document.getElementById('greeting');
+            const now = new Date();
+            const options = { timeZone: 'Asia/Shanghai', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const formattedTime = now.toLocaleTimeString('en-US', options);
 
-    function updateDateTime() {
-      const dateTimeElement = document.getElementById('date-time');
-      const now = new Date();
-      const options = {
-        timeZone: 'Asia/Manila', // GMT+8 timezone
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        year: 'numeric',
-        month: 'long',
-        day: '2-digit'
-      };
-      dateTimeElement.textContent = now.toLocaleString('en-US', options);
-    }
+            const hour = now.getHours();
+            let greeting;
+            if (hour < 12) greeting = "Good morning!";
+            else if (hour < 18) greeting = "Good afternoon!";
+            else greeting = "Good evening!";
 
-    // Update date and time every second
-    setInterval(updateDateTime, 1000);
-    window.onload = updateDateTime;
-  </script>
+            greetingElement.innerHTML = `${greeting} ${formattedTime} (GMT +8)`;
+        }
+
+        setInterval(updateGreeting, 1000);  // Update every second
+    </script>
 </body>
-
 </html>
